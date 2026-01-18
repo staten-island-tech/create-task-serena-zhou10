@@ -50,8 +50,15 @@ body {
 
 .title {
   text-align: center;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-image: url("https://i.pinimg.com/736x/9f/0e/9e/9f0e9ec88a5f049357528829050d7f38.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* text */
