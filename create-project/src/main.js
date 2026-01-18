@@ -80,7 +80,7 @@ const recipe = [
       "9. Bake for 10-12 minutes, or until the edges are lightly golden and the centers are set.",
       "10. Remove from the oven and let the cookies cool on the baking sheet for 5 minutes, then transfer them to a wire rack to cool completely.",
       "11. Once cooled, top the cookies with crushed Oreos for decoration and extra flavor.",
-      "(Note: Cool the cookies completely before storing them in an airtight container at room temperature for up to 3 days.)",
+      "(note: cool the cookies completely before storing them in an airtight container at room temperature for up to 3 days.)",
     ],
   },
   {
@@ -489,7 +489,10 @@ function enableModal() {
       modalName.textContent = item.name;
       modalEquipment.textContent = item.equipment?.join(", ") || "";
       modalIngredients.textContent = item.ingredients.join(", ");
-      modalInstruction.textContent = item.instructions.join(" ");
+
+      modalInstruction.innerHTML = item.instructions
+        .map(step => `<p>${step}</p>`)
+        .join("");
 
       modal.classList.add("show");
     });
