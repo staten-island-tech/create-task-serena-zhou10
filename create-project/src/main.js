@@ -504,3 +504,28 @@ function enableModal() {
     }
   });
 }
+
+const uploadForm = document.getElementById("uploadForm");
+
+uploadForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const fileInput = uploadForm.querySelector('input[type="file"]');
+  const name = document.getElementById("uploadName").value;
+  const equipment = document.getElementById("uploadEquipment").value;
+  const ingredients = document.getElementById("uploadIngredients").value;
+  const instructions = document.getElementById("uploadInstructions").value;
+  const file = fileInput.files[0];
+  if (!file) return alert("Please select an image");
+  const imgUrl = URL.createObjectURL(file);
+  const newArt = {
+    name: name,
+    equipment: equipment,
+    ingredients: ingredients,
+    instructions: instructions,
+    img: imgUrl,
+    alt: name,
+    category: ["User Upload"],
+  };
+  saveUploads();
+  uploadForm.reset();
+});
