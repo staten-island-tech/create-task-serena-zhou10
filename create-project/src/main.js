@@ -14,7 +14,7 @@ const recipe = [
       "Measuring Cups",
       "Measuring Spoons",
       "Oven",
-      "Parchment Paper"
+      "Parchment Paper",
     ],
     ingredients: [
       "1 1/2 cups granulated sugar",
@@ -50,7 +50,7 @@ const recipe = [
       "Spatula",
       "Measuring Cups",
       "Measuring Spoons",
-      "Oven"
+      "Oven",
     ],
     ingredients: [
       "1 1/2 cups all-purpose flour",
@@ -95,7 +95,7 @@ const recipe = [
       "Spatula",
       "Measuring Cups",
       "Measuring Spoons",
-      "Oven"
+      "Oven",
     ],
     ingredients: [
       "1 1/2 cups all-purpose flour",
@@ -122,7 +122,7 @@ const recipe = [
       "8. Gently wrap the dough around the filling, sealing it completely.",
       "9. Place cookies on the baking sheet, spacing them 2 inches apart.",
       "10. Bake for 10–12 minutes until edges are golden and marshmallow is lightly toasted.",
-      "11. Cool on the baking sheet for 5 minutes before transferring to a wire rack."
+      "11. Cool on the baking sheet for 5 minutes before transferring to a wire rack.",
     ],
   },
   {
@@ -137,7 +137,7 @@ const recipe = [
       "Spatula",
       "Measuring Cups",
       "Measuring Spoons",
-      "Oven"
+      "Oven",
     ],
     ingredients: [
       "1 cup all-purpose flour",
@@ -159,8 +159,8 @@ const recipe = [
       "6. Fold in the chocolate chips.",
       "7. Scoop dough onto the baking sheet, leaving space between cookies.",
       "8. Bake for 10–12 minutes until the tops are set but centers remain soft.",
-      "9. Let cookies cool on the tray for 5 minutes before moving to a rack."
-    ]
+      "9. Let cookies cool on the tray for 5 minutes before moving to a rack.",
+    ],
   },
   {
     name: "Chocolate Chip Cookie",
@@ -174,7 +174,7 @@ const recipe = [
       "Spatula",
       "Measuring Cups",
       "Measuring Spoons",
-      "Oven"
+      "Oven",
     ],
     ingredients: [
       "2 1/4 cups all-purpose flour",
@@ -196,8 +196,8 @@ const recipe = [
       "6. Fold in chocolate chips.",
       "7. Scoop dough onto baking sheet, spacing 2 inches apart.",
       "8. Bake for 10–12 minutes until edges are lightly golden.",
-      "9. Cool on baking sheet briefly before transferring."
-    ]
+      "9. Cool on baking sheet briefly before transferring.",
+    ],
   },
   {
     name: "Red Velvet Marshmallow Cookie",
@@ -211,7 +211,7 @@ const recipe = [
       "Spatula",
       "Measuring Cups",
       "Measuring Spoons",
-      "Oven"
+      "Oven",
     ],
     ingredients: [
       "1 1/4 cups all-purpose flour",
@@ -235,8 +235,8 @@ const recipe = [
       "6. Fold in white chocolate chunks.",
       "7. Scoop dough onto baking sheet and gently press a marshmallow on top.",
       "8. Bake for 10–12 minutes until cookies are set and marshmallow is soft.",
-      "9. Cool slightly before transferring to a wire rack."
-    ]
+      "9. Cool slightly before transferring to a wire rack.",
+    ],
   },
   {
     name: "Tiramisu",
@@ -250,7 +250,7 @@ const recipe = [
       "Whisk",
       "Measuring Cups",
       "Measuring Spoons",
-      "Refrigerator"
+      "Refrigerator",
     ],
     ingredients: [
       "6 large egg yolks",
@@ -286,7 +286,7 @@ const recipe = [
       "Pastry Cutter",
       "Measuring Cups",
       "Measuring Spoons",
-      "Oven"
+      "Oven",
     ],
     ingredients: [
       "2 cups all-purpose flour",
@@ -323,7 +323,7 @@ const recipe = [
       "Deep Fryer or Pot",
       "Thermometer",
       "Slotted Spoon",
-      "Paper Towels"
+      "Paper Towels",
     ],
     ingredients: [
       "1 1/2 cups glutinous rice flour",
@@ -355,7 +355,7 @@ const recipe = [
       "Saucepan",
       "Wooden Spoon",
       "Measuring Cups",
-      "Measuring Spoons"
+      "Measuring Spoons",
     ],
     ingredients: [
       "1 cup glutinous rice flour",
@@ -386,7 +386,7 @@ const recipe = [
       "Whisk",
       "Measuring Cups",
       "Measuring Spoons",
-      "Heat Source"
+      "Heat Source",
     ],
     ingredients: [
       "1 cup all-purpose flour",
@@ -422,7 +422,7 @@ const recipe = [
       "Round Piping Tip",
       "Baking Sheet",
       "Parchment Paper",
-      "Oven"
+      "Oven",
     ],
     ingredients: [
       "1 cup powdered sugar",
@@ -433,7 +433,7 @@ const recipe = [
       "Gel food coloring (optional)",
       "1/2 cup butter, softened (for filling)",
       "1 cup powdered sugar (for filling)",
-      "1 tsp vanilla extract (for filling)"
+      "1 tsp vanilla extract (for filling)",
     ],
     instructions: [
       "1. Line two baking sheets with parchment paper and prepare a piping bag fitted with a round tip.",
@@ -451,10 +451,10 @@ const recipe = [
       "13. Remove from the oven and allow the shells to cool completely before removing them from the parchment.",
       "14. To make the filling, beat the softened butter until creamy, then gradually add powdered sugar and vanilla extract until smooth.",
       "15. Pipe filling onto the flat side of one shell and sandwich with another shell of similar size.",
-      "16. Refrigerate assembled macarons for at least 24 hours for best flavor and texture, then bring to room temperature before serving."
+      "16. Refrigerate assembled macarons for at least 24 hours for best flavor and texture, then bring to room temperature before serving.",
     ],
   },
-]
+];
 
 function inject(item, index) {
   const container = document.querySelector(".container");
@@ -463,7 +463,7 @@ function inject(item, index) {
     `<div class="card" data-index="${index}">
       <img src="${item.img}" alt="${item.alt}" />
       <h2>${item.name}</h2>
-    </div>`
+    </div>`,
   );
 }
 
@@ -491,7 +491,7 @@ function enableModal() {
       modalIngredients.textContent = item.ingredients.join(", ");
 
       modalInstruction.innerHTML = item.instructions
-        .map(step => `<p>${step}</p>`)
+        .map((step) => `<p>${step}</p>`)
         .join("");
 
       modal.classList.add("show");

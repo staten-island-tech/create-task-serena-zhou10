@@ -21,11 +21,18 @@
     <h1>Baking Recipes</h1>
   </div>
 
+  <form id="search-form">
+    <label class="search-input">Search for a recipe:</label>
+    <input class="search-input2" type="text" placeholder="Enter recipe name" />
+    <button type="submit">Search</button>
+  </form>
+
   <div class="container"></div>
+
 
   <div id="modal" class="modal">
     <div class="modal__content">
-      <img id="modalImg"/>
+      <img id="modalImg" />
       <h3 id="modalName"></h3>
 
       <h6>Equipment</h6>
@@ -33,23 +40,23 @@
 
       <h6>Ingredients</h6>
       <h5 id="modalIngredients"></h5>
-      
+
       <h6>Recipe</h6>
       <p id="modalInstruction"></p>
     </div>
   </div>
 
   <div class="upload__section">
-        <h2>Upload Image</h2>
-        <form id="uploadForm">
-            <input type="file" name="image" required />
-            <input type="text" id="uploadName" placeholder="Name" required />
-            <input type="text" id="uploadEquipment" placeholder="Equipment" required />
-            <input type="text" id="uploadIngredients" placeholder="Ingredients" required />
-            <input type="text" id="uploadInstructions" placehold="Instructions" required />
-            <button type="submit">Upload</button>
-        </form>
-    </div>
+    <h2>Upload Image</h2>
+    <form id="uploadForm">
+      <input type="file" name="image" required />
+      <input type="text" id="uploadName" placeholder="Name" required />
+      <input type="text" id="uploadEquipment" placeholder="Equipment" required />
+      <input type="text" id="uploadIngredients" placeholder="Ingredients" required />
+      <input type="text" id="uploadInstructions" placehold="Instructions" required />
+      <button type="submit">Upload</button>
+    </form>
+  </div>
 </body>
 
 </html>
