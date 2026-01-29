@@ -150,6 +150,8 @@ p {
   font-family: "Poppins", sans-serif;
   padding: 2rem 0;
   width: 100%;
+  background-color: #975d40;
+  color: #f6f6ec;
 }
 
 #uploadForm {
@@ -180,6 +182,7 @@ p {
 #uploadForm input[type="file"] {
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
+  background-color: #975d40;
 }
 
 #uploadForm button {

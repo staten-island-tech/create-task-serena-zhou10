@@ -377,7 +377,7 @@ const recipe = [
     ],
   },
   {
-    name: "Bungeoppang (Fish-Shaped Pastry)",
+    name: "Bungeoppang",
     img: "https://i.pinimg.com/736x/5d/7f/d3/5d7fd3cc31985478f411537c8c204d77.jpg",
     alt: "Boong-eoh Ppang",
     equipment: [
@@ -509,7 +509,7 @@ const uploadForm = document.getElementById("uploadForm");
 
 uploadForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  const fileInput = uploadForm.querySelector('input[type="file"]');
+  const fileInput = uploadForm.querySelector("uploadFile");
   const name = document.getElementById("uploadName").value;
   const equipment = document.getElementById("uploadEquipment").value;
   const ingredients = document.getElementById("uploadIngredients").value;
@@ -517,7 +517,7 @@ uploadForm.addEventListener("submit", function (event) {
   const file = fileInput.files[0];
   if (!file) return alert("Please select an image");
   const imgUrl = URL.createObjectURL(file);
-  const newArt = {
+  const newRecipes = {
     name: name,
     equipment: equipment,
     ingredients: ingredients,
@@ -528,4 +528,5 @@ uploadForm.addEventListener("submit", function (event) {
   };
   saveUploads();
   uploadForm.reset();
+  newRecipes();
 });
