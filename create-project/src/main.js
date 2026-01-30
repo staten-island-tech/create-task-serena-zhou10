@@ -454,6 +454,39 @@ const recipe = [
       "16. Refrigerate assembled macarons for at least 24 hours for best flavor and texture, then bring to room temperature before serving.",
     ],
   },
+  {
+    name: "Churros",
+    img: "https://i.pinimg.com/736x/77/1c/08/771c08864ac2a174353143b74d702bd7.jpg",
+    alt: "Churros",
+    equipment: [
+      "Mixing Bowls",
+      "Electric Mixer",
+      "Piping Bag",
+      "Baking Sheet",
+      "Parchment Paper",
+      "Oven/Fryer",
+    ],
+    ingredients: [
+      "1/4 cup caster/superfine sugar (for coating)",
+      "2 tsp ground cinnamon (for coating)",
+      "1 cup flour, plain/all purpose",
+      "1 tsp baking powder",
+      "Pinch of salt",
+      "1 tbsp vegetable, canola/olive oil",
+      "1 cup boiling water",
+      "2 cups+ vegetable/canola oil (for frying)",
+    ],
+    instructions: [
+      "1. Combine sugar and cinnamon in a shallow bowl, set aside.",
+      "2. Mix flour, baking powder and salt in a bowl. Add oil and water and mix until just combined – it should be a thick, gummy batter, like a wet sticky dough, not thin and watery.",
+      "3. Transfer dough into a piping bag with a 8mm / 1/3 inches star tip nozzle. Set aside while oil heats.",
+      "4. Heat 5cm / 2 inches of oil over medium high in a small pot, wok or small but deep skillet (Note 3) to 170°C/340°F, or until it takes 20 seconds for a small cube of bread to turn golden.",
+      "5. Pipe 15cm / 6 inches lengths of dough into the oil, snipping with scissors (snip close to oil surface to avoid splash). Do 3 to 4 per batch, makes 10 to 12 in total.",
+      "6. Cook for 2-3 minutes or until golden and crisp, rolling occasionally.",
+      "7. Remove onto paper towel lined plate to drain. Then roll in sugar. Serve hot with Chocolate Sauce.",
+      "8. Place in a heatproof bowl and microwave in 30 second bursts, stirring in between, until smooth. Set aside for 5 minutes to cool and thicken slightly.",
+    ],
+  },
 ];
 
 function inject(item, index) {
@@ -487,9 +520,12 @@ function enableModal() {
 
       modalImg.src = item.img;
       modalName.textContent = item.name;
-      modalEquipment.textContent = item.equipment?.join(", ") || "";
-      modalIngredients.textContent = item.ingredients.join(", ");
-
+      modalEquipment.innerHTML = item.equipment
+        .map((step) => `<p>${step}</p>`)
+        .join("");
+      modalIngredients.innerHTML = item.ingredients
+        .map((step) => `<p>${step}</p>`)
+        .join("");
       modalInstruction.innerHTML = item.instructions
         .map((step) => `<p>${step}</p>`)
         .join("");
@@ -530,3 +566,50 @@ uploadForm.addEventListener("submit", function (event) {
   uploadForm.reset();
   newRecipes();
 });
+
+function setupSearch() {
+  const form = document.querySelector("#search-form");
+  const input = document.querySelector(".search-input2");
+  const results = document.querySelector(".api-response");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const searchTerm = input.value.trim().toLowerCase();
+
+    if (!searchTerm) {
+      results.innerHTML = "<p>Please enter a recipe.</p>";
+      return;
+    }
+
+    results.innerHTML = "<p>Searching...</p>";
+
+    try {
+      const URL = recipes;
+      const response = await fetch(searchURL);
+
+      if (!response.ok) {
+        throw new Error("Search request failed");
+      }
+
+      const recipes = await response.json();
+      results.innerHTML = "";
+
+      if (recipes.docs.length === 0) {
+        results.innerHTML = "<p>No matching recipes found.</p>";
+        return;
+      }
+
+      recipes.docs.forEach((recipes) => {
+        inject({ name: recipes.name });
+      });
+    } catch (error) {
+      results.innerHTML =
+        "<p>Something went wrong while searching. Please try again.</p>";
+      console.error(error);
+    }
+  });
+}
+
+getURL();
+setupSearch();

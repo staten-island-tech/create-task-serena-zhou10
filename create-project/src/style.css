@@ -27,6 +27,7 @@ body {
   text-align: center;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
@@ -152,40 +153,27 @@ p {
   width: 100%;
   background-color: #975d40;
   color: #f6f6ec;
-}
-
-#uploadForm {
-  font-family: "Poppins", sans-serif;
   display: flex;
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-#uploadForm input[type="text"],
-#uploadForm input[type="number"] {
+.uploadForm input[type="text"],
+.uploadForm input[type="number"] {
   font-family: "Poppins", sans-serif;
   padding: 0.2rem 0.2rem;
   font-size: 1rem;
   border-radius: 6px;
-
-  transition:
-    0.25s ease,
-    0.25s ease;
 }
 
-#uploadForm input[type="text"]:focus {
-  font-family: "Poppins", sans-serif;
-  outline: none;
-}
-
-#uploadForm input[type="file"] {
+.uploadForm input[type="file"] {
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
   background-color: #975d40;
 }
 
-#uploadForm button {
+.uploadForm button {
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
   padding: 0.2rem 0.8rem;
@@ -194,9 +182,9 @@ p {
   transition: 0.25s;
 }
 
-#uploadForm button:hover {
+.uploadForm button:hover {
   font-family: "Poppins", sans-serif;
-  background: transparent;
+  background: #f6f6ec;
 }
 
 /* search */

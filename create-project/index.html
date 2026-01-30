@@ -19,6 +19,7 @@
 <body>
   <div class="title">
     <h1>Baking Recipes</h1>
+    <h6>Serena Zhou</h6>
   </div>
 
   <form id="search-form">
@@ -48,12 +49,12 @@
 
   <div class="upload__section">
     <h2>Upload Image</h2>
-    <form id="uploadForm">
-      <input type="file" name="image" required />
+    <form class="uploadForm">
+      <input type="file" id="fileUpload" required />
       <input type="text" id="uploadName" placeholder="Name" required />
       <input type="text" id="uploadEquipment" placeholder="Equipment" required />
       <input type="text" id="uploadIngredients" placeholder="Ingredients" required />
-      <input type="text" id="uploadInstructions" placehold="Instructions" required />
+      <input type="text" id="uploadInstructions" placeholder="Instructions" required />
       <button type="submit">Upload</button>
     </form>
   </div>
