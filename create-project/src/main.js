@@ -541,73 +541,49 @@ function enableModal() {
   });
 }
 
-const uploadForm = document.getElementById("uploadForm");
+
+const uploadForm = document.getElementById(".uploadForm");
 
 uploadForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  const fileInput = uploadForm.querySelector("uploadFile");
-  const name = document.getElementById("uploadName").value;
-  const equipment = document.getElementById("uploadEquipment").value;
-  const ingredients = document.getElementById("uploadIngredients").value;
-  const instructions = document.getElementById("uploadInstructions").value;
+  const fileInput = uploadForm.querySelector("#uploadFile");
   const file = fileInput.files[0];
   if (!file) return alert("Please select an image");
-  const imgUrl = URL.createObjectURL(file);
+
   const newRecipes = {
-    name: name,
-    equipment: equipment,
-    ingredients: ingredients,
-    instructions: instructions,
-    img: imgUrl,
-    alt: name,
-    category: ["User Upload"],
+    name: document.getElementById("uploadName").value,
+    img: URL.createObjectURL(file),
+    alt: document.getElementById("uploadName").value,
+    equipment: document.getElementById("uploadEquipment").value.split(','),
+    ingredients: document.getElementById("uploadIngredients").value.split(','),
+    instructions: document.getElementById("uploadInstructions").value.split(','),
   };
-  saveUploads();
+
+  recipe.push(newRecipes);
+
+  document.querySelector(".container").innerHTML = "";
+  recipe.forEach(inject);
+  enableModal();
+
   uploadForm.reset();
-  newRecipes();
 });
+
 
 function setupSearch() {
   const form = document.querySelector("#search-form");
   const input = document.querySelector(".search-input2");
-  const results = document.querySelector(".api-response");
 
-  form.addEventListener("submit", async (event) => {
+  form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const searchTerm = input.value.trim().toLowerCase();
 
-    if (!searchTerm) {
-      results.innerHTML = "<p>Please enter a recipe.</p>";
-      return;
-    }
+     const filteredRecipes = recipe.filter((item) =>
+      item.name.toLowerCase().includes(searchTerm)
+    );
 
-    results.innerHTML = "<p>Searching...</p>";
-
-    try {
-      const URL = recipes;
-      const response = await fetch(searchURL);
-
-      if (!response.ok) {
-        throw new Error("Search request failed");
-      }
-
-      const recipes = await response.json();
-      results.innerHTML = "";
-
-      if (recipes.docs.length === 0) {
-        results.innerHTML = "<p>No matching recipes found.</p>";
-        return;
-      }
-
-      recipes.docs.forEach((recipes) => {
-        inject({ name: recipes.name });
-      });
-    } catch (error) {
-      results.innerHTML =
-        "<p>Something went wrong while searching. Please try again.</p>";
-      console.error(error);
-    }
+    const container = document.querySelector(".container");
+    container.innerHTML = "";
   });
 }
 
