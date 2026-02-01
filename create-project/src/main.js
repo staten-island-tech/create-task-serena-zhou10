@@ -542,11 +542,11 @@ function enableModal() {
 }
 
 
-const uploadForm = document.getElementById(".uploadForm");
+const uploadForm = document.querySelector(".uploadForm");
 
 uploadForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  const fileInput = uploadForm.querySelector("#uploadFile");
+  const fileInput = uploadForm.querySelector("#fileUpload");
   const file = fileInput.files[0];
   if (!file) return alert("Please select an image");
 
@@ -578,14 +578,18 @@ function setupSearch() {
 
     const searchTerm = input.value.trim().toLowerCase();
 
-     const filteredRecipes = recipe.filter((item) =>
+    const filteredRecipes = recipe.filter((item) =>
       item.name.toLowerCase().includes(searchTerm)
     );
 
     const container = document.querySelector(".container");
     container.innerHTML = "";
+
+    filteredRecipes.forEach((item, index) => {
+      inject(item, recipe.indexOf(item));
+    });
+
+    enableModal();
   });
 }
-
-getURL();
 setupSearch();
